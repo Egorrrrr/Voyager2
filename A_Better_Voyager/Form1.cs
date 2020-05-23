@@ -71,12 +71,13 @@ namespace A_Better_Voyager
             }
 
         }
+        
 
         private void Panel2_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            Cities.Add(cnt, e.Location);
-            cnt++;
-            panel2.Invalidate();
+            //Cities.Add(cnt, e.Location);
+            //cnt++;
+           //panel2.Invalidate();
 
         }
 
