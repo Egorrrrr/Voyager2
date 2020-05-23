@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace A_Better_Voyager
 {
@@ -60,63 +61,53 @@ namespace A_Better_Voyager
             }
             else
             {
-                StreamReader a = new StreamReader(@openFileDialog1.FileName);
-                string newstr = a.ReadToEnd();
                // MessageBox.Show(newstr);
-                ToArray(newstr);
+                ToArray(openFileDialog1.FileName);
                
             }
         }
-        public double[][] ToArray(string a)
+        public void ToArray(string path)
         {
+            double[][] dists;
+            Regex re = new Regex(@"\s+");
+            Regex re2 = new Regex(@"^\s+");
+            List<string> tmp = new List<string>();
+            StreamReader a = new StreamReader(@openFileDialog1.FileName);
+            while (!a.EndOfStream)
+            {
+                string tmp2 = a.ReadLine();
+                tmp2 = re.Replace(tmp2, " ");
+                tmp2 = re2.Replace(tmp2, "");
+                tmp.Add(tmp2);
+            }
+            dists = new double[tmp.Count][];
+            for (int i = 0; i < dists.Length; i++)
+            {
+                dists[i] = new double[dists.Length];
+            }
+            for (int i = 0; i < tmp.Count; i++)
+            {
+                string[] t = tmp[i].Split(' ');
+                for (int j = 0; j < tmp.Count; j++)
+                {
+                    dists[i][j] = double.Parse(t[j]);
+                }
+            }
+            string test = "";
+            for (int i = 0; i < dists.Length; i++)
+            {
+                for (int j  = 0; j < dists.Length; j++)
+                {
+                    test += dists[i][j] + " ";
+                }
+                test += "\n";
+            }
+            Solve(dists);
 
-            char[] sep = new char[2] { ' ', '\r' };
-            string[] tmp = a.Split('\n');
-            double[][] dists = new double[tmp.Length][];
-            for (int i = 0; i < dists.Length; i++)
-            {
-                dists[i] = new double[tmp.Length];
-            }
-            for (int i = 0; i < tmp.Length; i++)
-            {
-                tmp[i] = tmp[i].TrimEnd();
-                string[] tmp2 = tmp[i].Split(sep);
-                
-                for (int j = 0; j < tmp2.Length; j++)
-                {
-                    dists[i][j] = int.Parse(tmp2[j]);
-                }
-                
-            }
-            for (int i = 0; i < dists.Length; i++)
-            {
-                if(dists[i][i] != 0)
-                {
-                    MessageBox.Show("Неверные данные");
 
-                }
-                for (int j = 0; j < dists.Length; j++)
-                {
-                    if(dists[i][j] != dists[j][i])
-                    {
-                        MessageBox.Show("Неверные данные");
-                        
-                    }
-                }
-            }
-            for (int i = 0; i < dists.Length; i++)
-            {
-                string trple = "";
-                for (int j = 0; j < dists.Length; j++)
-                {
-                    trple += dists[i][j] + " ";
-                }
-               // listBox1.Items.Add(trple);
-            }
-            Solve(dists, tmp.Length);
-            return dists;
+
         }
-         public int FindMax(int[][] a)
+        public int FindMax(int[][] a)
          {
             int max = int.MinValue;
             for (int i = 0; i < a.Length; i++)
@@ -146,7 +137,7 @@ namespace A_Better_Voyager
             return Convert.ToInt32(sum / amount);
         }
 
-        public  void Solve(double [][] ds, int cnt)
+        public  void Solve(double [][] ds)
             {
                 
                 try
