@@ -197,7 +197,7 @@ namespace A_Better_Voyager
         {
             if (help)
             {
-                MessageBox.Show("Запускает муравьиную колонию. Лучший маршрут из найденых отобразится на карте\n");
+                MessageBox.Show("Запускает муравьиную колонию. Лучший маршрут из найденных отобразится на карте\n");
                 return;
             }
             if (Cities.Count > 1)
@@ -289,7 +289,7 @@ namespace A_Better_Voyager
         {
             if (help)
             {
-                MessageBox.Show("Позволяет узнать растояние между, указаными в двух полях сверху, городам.\n P.S Неактально, так как номера городов пользователю не известны");
+                MessageBox.Show("Позволяет узнать расстояние между, указными в двух полях сверху, городам.\n P.S Неактально, так как номера городов пользователю не известны");
                 return;
             }
             Pen pp = new Pen(Brushes.Red);
@@ -341,7 +341,7 @@ namespace A_Better_Voyager
                     item.BackColor = Color.LightGreen;
                 }
                 help = true;
-                MessageBox.Show("Нажмитие на интересующий элемент, чтобы получить информацию о нем\nЧтобы выйти из режима помощи снова нажмите на 'Help'");
+                MessageBox.Show("Нажмите на интересующий элемент, чтобы получить информацию о нем\nЧтобы выйти из режима помощи снова нажмите на 'Help'");
             }
             else
             {
@@ -385,7 +385,7 @@ namespace A_Better_Voyager
         {
             if (help)
             {
-                MessageBox.Show("Количетсво итераций\n");
+                MessageBox.Show("Количество итераций\n");
                 return;
             }
         }
