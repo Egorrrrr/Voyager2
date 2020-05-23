@@ -76,6 +76,10 @@ namespace A_Better_Voyager
             while (!a.EndOfStream)
             {
                 string tmp2 = a.ReadLine();
+                if(tmp2[0] == '#')
+                {
+                    continue;
+                }
                 tmp2 = re.Replace(tmp2, " ");
                 tmp2 = re2.Replace(tmp2, "");
                 tmp.Add(tmp2);
