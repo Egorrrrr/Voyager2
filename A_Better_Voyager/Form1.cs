@@ -315,7 +315,7 @@ namespace A_Better_Voyager
         {
             if (help)
             {
-                MessageBox.Show("Запускает программу для работы с матрицами их файлов .txt\n");
+                MessageBox.Show("Запускает программу для работы с матрицами из файлов .txt\n");
                 return;
             }
             F3.Show();
