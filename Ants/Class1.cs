@@ -42,7 +42,7 @@ namespace AntColony
                 {
                     for (int j = 0; j < dsts.Length; j++)
                     {
-                        dsts[i][j] /=  coef * 1.35;
+                        dsts[i][j] /=  101.75;
                     }
                 }
                 int numCities = cts;

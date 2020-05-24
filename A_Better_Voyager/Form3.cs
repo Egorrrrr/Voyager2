@@ -118,9 +118,9 @@ namespace A_Better_Voyager
 
 
         }
-        public int FindMax(int[][] a)
+        public double FindMax(double[][] a)
         {
-            int max = int.MinValue;
+            double max = double.MinValue;
             for (int i = 0; i < a.Length; i++)
             {
                 for (int j = 0; j < a.Length; j++)
@@ -134,19 +134,19 @@ namespace A_Better_Voyager
             return max;
 
         }
-        public static int FindAvergae(double[][] a)
-        {
-            double sum = 0;
-            int amount = a.Length * a.Length;
-            for (int i = 0; i < a.Length; i++)
-            {
-                for (int j = 0; j < a.Length; j++)
-                {
-                    sum += a[i][j];
-                }
-            }
-            return Convert.ToInt32(sum / amount);
-        }
+        //public static int FindAvergae(double[][] a)
+        //{
+        //    double sum = 0;
+        //    int amount = a.Length * a.Length;
+        //    for (int i = 0; i < a.Length; i++)
+        //    {
+        //        for (int j = 0; j < a.Length; j++)
+        //        {
+        //            sum += a[i][j];
+        //        }
+        //    }
+        //    return Convert.ToInt32(sum / amount);
+        //}
 
         public void Solve(double[][] ds)
         {
@@ -158,15 +158,17 @@ namespace A_Better_Voyager
                 ds.CopyTo(arr, 0);
                 if (!uint.TryParse(Ants.Text, out uint aants) || !uint.TryParse(Iters.Text, out uint iters))
                 {
+                    MessageBox.Show("Возможны ошибки в полях: 'Итерации' или 'Муравьи'");
                     return;
                 }
-                int avg = FindAvergae(ds);
-                int coef = avg / 4;
+                double max = FindMax(ds);
+                double coef2 = max / 8;
+                
                 for (int i = 0; i < ds.Length; i++)
                 {
                     for (int j = 0; j < ds.Length; j++)
                     {
-                        ds[i][j] /= coef * 1.35;
+                        ds[i][j] /= coef2;
                     }
                 }
 
@@ -196,7 +198,7 @@ namespace A_Better_Voyager
                 int[] bestTrail = BestTrail(ants, dists);
                 double bestLength = Length(bestTrail, dists);
 
-                listBox1.Items.Add("Изначальный лучший путь: " + (bestLength * 1.35 * coef).ToString("F1"));
+                listBox1.Items.Add("Изначальный лучший путь: " + (bestLength * coef2).ToString("F1"));
 
                 listBox1.Items.Add("Создание начальных феромонов...");
                 double[][] pheromones = InitPheromones(numCities);
@@ -214,7 +216,7 @@ namespace A_Better_Voyager
                     {
                         bestLength = currBestLength;
                         bestTrail = currBestTrail;
-                        listBox1.Items.Add("Новый лучший путь " + (bestLength * 1.35 * coef).ToString("F1") + " Итерация:  " + time);
+                        listBox1.Items.Add("Новый лучший путь " + (bestLength *coef2).ToString("F1") + " Итерация:  " + time);
                     }
                     time += 1;
                 }
@@ -228,7 +230,7 @@ namespace A_Better_Voyager
                 }
                 listBox1.Items.Add(asa);
 
-                listBox1.Items.Add("Длина лучшего пути " + (bestLength * 1.35 * coef).ToString("F1"));
+                listBox1.Items.Add("Длина лучшего пути " + (bestLength * coef2).ToString("F1"));
 
                 listBox1.Items.Add("Конец");
 
