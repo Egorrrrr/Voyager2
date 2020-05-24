@@ -13,11 +13,11 @@ namespace AntColony
         
 
         private static Random random = new Random();
-        private static int alpha = 3;
-        private static int beta = 2;
+        private static int alpha = 4;
+        private static int beta = 3;
 
-        private static double Decay = 0.01;
-        private static double Q = 3.0;
+        private static double Decay = 0.005;
+        private static double Q = 200000.0;
 
         public static int[] Solve(double[][] dsts, int cts,int numberants, int iterations, out int best)
         {
@@ -25,13 +25,7 @@ namespace AntColony
             {
 
                 
-                for (int i = 0; i < dsts.Length; i++)
-                {
-                    for (int j = 0; j < dsts.Length; j++)
-                    {
-                        dsts[i][j] /=  101.75;
-                    }
-                }
+                
                 int numCities = cts;
                 int numAnts = numberants;
                 int maxTime = iterations;

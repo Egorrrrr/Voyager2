@@ -15,11 +15,11 @@ namespace A_Better_Voyager
     public partial class Form3 : Form
     {
         private static Random random = new Random();
-        private static int alpha = 3;
-        private static int beta = 2;
+        private static int alpha = 4;
+        private static int beta = 3;
 
-        private static double rho = 0.01;
-        private static double Q = 2.0;
+        private static double rho = 0.005;
+        private static double Q = 200000;
 
         protected override CreateParams CreateParams
         {
@@ -118,22 +118,7 @@ namespace A_Better_Voyager
 
 
         }
-        public double FindMax(double[][] a)
-        {
-            double max = double.MinValue;
-            for (int i = 0; i < a.Length; i++)
-            {
-                for (int j = 0; j < a.Length; j++)
-                {
-                    if (a[i][j] > max)
-                    {
-                        max = a[i][j];
-                    }
-                }
-            }
-            return max;
-
-        }
+        
        
 
         public void Solve(double[][] ds)
@@ -149,17 +134,7 @@ namespace A_Better_Voyager
                     MessageBox.Show("Возможны ошибки в полях: 'Итерации' или 'Муравьи'");
                     return;
                 }
-                double max = FindMax(ds);
-                double coef2 = max / 8;
-                
-                for (int i = 0; i < ds.Length; i++)
-                {
-                    for (int j = 0; j < ds.Length; j++)
-                    {
-                        ds[i][j] /= coef2;
-                    }
-                }
-
+              
 
                 listBox1.Items.Clear();
                 listBox1.Items.Add("Начало");
@@ -186,7 +161,7 @@ namespace A_Better_Voyager
                 int[] bestTrail = BestTrail(ants, dists);
                 double bestLength = Length(bestTrail, dists);
 
-                listBox1.Items.Add("Изначальный лучший путь: " + (bestLength * coef2).ToString("F1"));
+                listBox1.Items.Add("Изначальный лучший путь: " + bestLength.ToString("F1"));
 
                 listBox1.Items.Add("Создание начальных феромонов...");
                 double[][] pheromones = InitPheromones(numCities);
@@ -204,7 +179,7 @@ namespace A_Better_Voyager
                     {
                         bestLength = currBestLength;
                         bestTrail = currBestTrail;
-                        listBox1.Items.Add("Новый лучший путь " + (bestLength *coef2).ToString("F1") + " Итерация:  " + time);
+                        listBox1.Items.Add("Новый лучший путь " + (bestLength).ToString("F1") + " Итерация:  " + time);
                     }
                     time += 1;
                 }
@@ -218,7 +193,7 @@ namespace A_Better_Voyager
                 }
                 listBox1.Items.Add(asa);
 
-                listBox1.Items.Add("Длина лучшего пути " + (bestLength * coef2).ToString("F1"));
+                listBox1.Items.Add("Длина лучшего пути " + (bestLength).ToString("F1"));
 
                 listBox1.Items.Add("Конец");
 
