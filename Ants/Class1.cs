@@ -10,19 +10,7 @@ namespace AntColony
 {
   public  class AntColonyProgram
     {
-        public static int FindAvergae(double[][] a)
-        {
-            double sum = 0;
-            int amount = a.Length * a.Length;
-            for (int i = 0; i < a.Length; i++)
-            {
-                for (int j = 0; j < a.Length; j++)
-                {
-                    sum += a[i][j];
-                }
-            }
-            return Convert.ToInt32(sum / amount);
-        }
+        
 
         private static Random random = new Random();
         private static int alpha = 3;
@@ -36,8 +24,7 @@ namespace AntColony
             try
             {
 
-                int avg = FindAvergae(dsts);
-                int coef = avg / 4;
+                
                 for (int i = 0; i < dsts.Length; i++)
                 {
                     for (int j = 0; j < dsts.Length; j++)

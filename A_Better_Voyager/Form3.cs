@@ -134,19 +134,7 @@ namespace A_Better_Voyager
             return max;
 
         }
-        //public static int FindAvergae(double[][] a)
-        //{
-        //    double sum = 0;
-        //    int amount = a.Length * a.Length;
-        //    for (int i = 0; i < a.Length; i++)
-        //    {
-        //        for (int j = 0; j < a.Length; j++)
-        //        {
-        //            sum += a[i][j];
-        //        }
-        //    }
-        //    return Convert.ToInt32(sum / amount);
-        //}
+       
 
         public void Solve(double[][] ds)
         {
