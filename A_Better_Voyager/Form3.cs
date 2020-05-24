@@ -72,7 +72,7 @@ namespace A_Better_Voyager
             Regex re = new Regex(@"\s+");
             Regex re2 = new Regex(@"^\s+");
             List<string> tmp = new List<string>();
-            StreamReader a = new StreamReader(@openFileDialog1.FileName);
+            StreamReader a = new StreamReader(path);
             while (!a.EndOfStream)
             {
                 string tmp2 = a.ReadLine();
@@ -97,14 +97,21 @@ namespace A_Better_Voyager
                     dists[i][j] = double.Parse(t[j]);
                 }
             }
-            string test = "";
             for (int i = 0; i < dists.Length; i++)
             {
-                for (int j  = 0; j < dists.Length; j++)
+                if(dists[i][i] != 0)
                 {
-                    test += dists[i][j] + " ";
+                    MessageBox.Show("В файле матрице обнаружена ошибка");
+                    return;
                 }
-                test += "\n";
+                for (int j = 0; j < dists.Length; j++)
+                {
+                    if(dists[i][j] != dists[j][i])
+                    {
+                        MessageBox.Show("В файле матрице обнаружена ошибка");
+                        return;
+                    }
+                }
             }
             Solve(dists);
 
@@ -519,6 +526,22 @@ namespace A_Better_Voyager
             //Solve();
         }
 
+        private void Panel2_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+        }
 
+        private void Panel2_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            files[0] = @files[0];
+            ToArray(files[0]);
+
+        }
+
+        private void Label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
