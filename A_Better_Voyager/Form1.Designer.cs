@@ -123,6 +123,7 @@
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
+            this.button3.ForeColor = System.Drawing.SystemColors.Desktop;
             this.button3.Location = new System.Drawing.Point(1103, 466);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(197, 58);
@@ -134,31 +135,28 @@
             // 
             // textBox1
             // 
-            this.textBox1.BackColor = System.Drawing.Color.Gray;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(1151, 446);
+            this.textBox1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBox1.Location = new System.Drawing.Point(1151, 437);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 19);
+            this.textBox1.Size = new System.Drawing.Size(100, 26);
             this.textBox1.TabIndex = 6;
             this.textBox1.Text = "15";
             // 
             // FC
             // 
-            this.FC.BackColor = System.Drawing.Color.Gray;
-            this.FC.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FC.Location = new System.Drawing.Point(1104, 272);
+            this.FC.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.FC.Location = new System.Drawing.Point(1104, 265);
             this.FC.Name = "FC";
-            this.FC.Size = new System.Drawing.Size(38, 19);
+            this.FC.Size = new System.Drawing.Size(38, 26);
             this.FC.TabIndex = 10;
             this.FC.Text = "15";
             // 
             // SC
             // 
-            this.SC.BackColor = System.Drawing.Color.Gray;
-            this.SC.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SC.Location = new System.Drawing.Point(1262, 272);
+            this.SC.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.SC.Location = new System.Drawing.Point(1262, 265);
             this.SC.Name = "SC";
-            this.SC.Size = new System.Drawing.Size(38, 19);
+            this.SC.Size = new System.Drawing.Size(38, 26);
             this.SC.TabIndex = 11;
             this.SC.Text = "15";
             // 
@@ -206,7 +204,7 @@
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(1137, 86);
+            this.label3.Location = new System.Drawing.Point(1137, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 23);
             this.label3.TabIndex = 14;
@@ -227,12 +225,11 @@
             // 
             // Ants
             // 
-            this.Ants.BackColor = System.Drawing.Color.Gray;
-            this.Ants.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Ants.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.Ants.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Ants.Location = new System.Drawing.Point(1101, 150);
             this.Ants.Name = "Ants";
-            this.Ants.Size = new System.Drawing.Size(65, 28);
+            this.Ants.Size = new System.Drawing.Size(65, 35);
             this.Ants.TabIndex = 18;
             this.Ants.Text = "75";
             this.Ants.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -243,7 +240,7 @@
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
-            this.button4.Location = new System.Drawing.Point(1104, 382);
+            this.button4.Location = new System.Drawing.Point(1104, 373);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(197, 58);
             this.button4.TabIndex = 7;
@@ -254,12 +251,11 @@
             // 
             // Iter
             // 
-            this.Iter.BackColor = System.Drawing.Color.Gray;
-            this.Iter.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Iter.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.Iter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Iter.Location = new System.Drawing.Point(1101, 116);
+            this.Iter.Location = new System.Drawing.Point(1101, 109);
             this.Iter.Name = "Iter";
-            this.Iter.Size = new System.Drawing.Size(65, 28);
+            this.Iter.Size = new System.Drawing.Size(65, 35);
             this.Iter.TabIndex = 19;
             this.Iter.Text = "60";
             this.Iter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -268,9 +264,9 @@
             // 
             this.label4.BackColor = System.Drawing.Color.Gray;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label4.Location = new System.Drawing.Point(1172, 116);
+            this.label4.Location = new System.Drawing.Point(1172, 109);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(118, 31);
+            this.label4.Size = new System.Drawing.Size(118, 35);
             this.label4.TabIndex = 20;
             this.label4.Text = "Итерации";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -282,7 +278,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label5.Location = new System.Drawing.Point(1172, 150);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(118, 28);
+            this.label5.Size = new System.Drawing.Size(118, 35);
             this.label5.TabIndex = 21;
             this.label5.Text = "Муравьи";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -290,12 +286,11 @@
             // 
             // Seed
             // 
-            this.Seed.BackColor = System.Drawing.Color.Gray;
-            this.Seed.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Seed.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.Seed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Seed.Location = new System.Drawing.Point(1103, 79);
+            this.Seed.Location = new System.Drawing.Point(1103, 68);
             this.Seed.Name = "Seed";
-            this.Seed.Size = new System.Drawing.Size(187, 28);
+            this.Seed.Size = new System.Drawing.Size(187, 35);
             this.Seed.TabIndex = 22;
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -303,7 +298,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label6.Location = new System.Drawing.Point(1161, 47);
+            this.label6.Location = new System.Drawing.Point(1161, 36);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(71, 29);
             this.label6.TabIndex = 23;
