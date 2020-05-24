@@ -57,13 +57,13 @@ namespace A_Better_Voyager
             {
                 MessageBox.Show("Файл не текстовый");
                 return;
-                
+
             }
             else
             {
-               // MessageBox.Show(newstr);
+                // MessageBox.Show(newstr);
                 ToArray(openFileDialog1.FileName);
-               
+
             }
         }
         public void ToArray(string path)
@@ -76,7 +76,7 @@ namespace A_Better_Voyager
             while (!a.EndOfStream)
             {
                 string tmp2 = a.ReadLine();
-                if(tmp2[0] == '#')
+                if (tmp2[0] == '#')
                 {
                     continue;
                 }
@@ -99,16 +99,16 @@ namespace A_Better_Voyager
             }
             for (int i = 0; i < dists.Length; i++)
             {
-                if(dists[i][i] != 0)
+                if (dists[i][i] != 0)
                 {
-                    MessageBox.Show("В файле матрице обнаружена ошибка");
+                    MessageBox.Show("В матрице обнаружена ошибка");
                     return;
                 }
                 for (int j = 0; j < dists.Length; j++)
                 {
-                    if(dists[i][j] != dists[j][i])
+                    if (dists[i][j] != dists[j][i])
                     {
-                        MessageBox.Show("В файле матрице обнаружена ошибка");
+                        MessageBox.Show("В матрице обнаружена ошибка");
                         return;
                     }
                 }
@@ -119,13 +119,13 @@ namespace A_Better_Voyager
 
         }
         public int FindMax(int[][] a)
-         {
+        {
             int max = int.MinValue;
             for (int i = 0; i < a.Length; i++)
             {
                 for (int j = 0; j < a.Length; j++)
                 {
-                    if(a[i][j] > max)
+                    if (a[i][j] > max)
                     {
                         max = a[i][j];
                     }
@@ -133,7 +133,7 @@ namespace A_Better_Voyager
             }
             return max;
 
-         }
+        }
         public static int FindAvergae(double[][] a)
         {
             double sum = 0;
@@ -148,11 +148,11 @@ namespace A_Better_Voyager
             return Convert.ToInt32(sum / amount);
         }
 
-        public  void Solve(double [][] ds)
+        public void Solve(double[][] ds)
+        {
+
+            try
             {
-                
-                try
-                {
 
                 double[][] arr = new double[ds.Length][];
                 ds.CopyTo(arr, 0);
@@ -172,355 +172,355 @@ namespace A_Better_Voyager
 
 
                 listBox1.Items.Clear();
-                    listBox1.Items.Add("Начало");
+                listBox1.Items.Add("Начало");
 
-                    int numCities = ds.Length;
-                    int numAnts = (int)aants;
-                    int maxTime = (int)iters;
+                int numCities = ds.Length;
+                int numAnts = (int)aants;
+                int maxTime = (int)iters;
 
-                    listBox1.Items.Add("Количество городов = " + numCities);
+                listBox1.Items.Add("Количество городов = " + numCities);
 
-                    listBox1.Items.Add("\nКоличество муравьев = " + numAnts);
-                    listBox1.Items.Add("Количество итераций = " + maxTime);
+                listBox1.Items.Add("\nКоличество муравьев = " + numAnts);
+                listBox1.Items.Add("Количество итераций = " + maxTime);
 
-                    listBox1.Items.Add("Альфа(влияние ферамона) = " + alpha);
-                    listBox1.Items.Add("Бета(влияние дистаниции) = " + beta);
-                    listBox1.Items.Add("Коэфициент испарения ферамона= " + rho.ToString("F2"));
-                    listBox1.Items.Add("Q(Коэфициент выделения ферамона) = " + Q.ToString("F2"));
+                listBox1.Items.Add("Альфа(влияние феромона) = " + alpha);
+                listBox1.Items.Add("Бета(влияние дистанции) = " + beta);
+                listBox1.Items.Add("Коэффициент испарения феромона= " + rho.ToString("F2"));
+                listBox1.Items.Add("Q(Коэффициент выделения феромона) = " + Q.ToString("F2"));
 
-                    double[][] dists = ds;
+                double[][] dists = ds;
 
-                    listBox1.Items.Add("Создание муравьев...");
-                    int[][] ants = InitAnts(numAnts, numCities);
+                listBox1.Items.Add("Создание муравьев...");
+                int[][] ants = InitAnts(numAnts, numCities);
 
-                    int[] bestTrail = BestTrail(ants, dists);
-                    double bestLength = Length(bestTrail, dists);
+                int[] bestTrail = BestTrail(ants, dists);
+                double bestLength = Length(bestTrail, dists);
 
-                    listBox1.Items.Add("Изначальный лучший путь: " + (bestLength*1.35 * coef).ToString("F1"));
+                listBox1.Items.Add("Изначальный лучший путь: " + (bestLength * 1.35 * coef).ToString("F1"));
 
-                    listBox1.Items.Add("Создание начальных ферамонов...");
-                    double[][] pheromones = InitPheromones(numCities);
+                listBox1.Items.Add("Создание начальных феромонов...");
+                double[][] pheromones = InitPheromones(numCities);
 
-                    int time = 0;
-                    listBox1.Items.Add("Начало цикла...");
-                    while (time < maxTime)
+                int time = 0;
+                listBox1.Items.Add("Начало цикла...");
+                while (time < maxTime)
+                {
+                    UpdateAnts(ants, pheromones, dists);
+                    UpdatePheromones(pheromones, ants, dists);
+
+                    int[] currBestTrail = BestTrail(ants, dists);
+                    double currBestLength = Length(currBestTrail, dists);
+                    if (currBestLength < bestLength)
                     {
-                        UpdateAnts(ants, pheromones, dists);
-                        UpdatePheromones(pheromones, ants, dists);
-
-                        int[] currBestTrail = BestTrail(ants, dists);
-                        double currBestLength = Length(currBestTrail, dists);
-                        if (currBestLength < bestLength)
-                        {
-                            bestLength = currBestLength;
-                            bestTrail = currBestTrail;
-                            listBox1.Items.Add("Новый лучший путь " + (bestLength * 1.35 * coef).ToString("F1") + " Итерация:  " + time);
-                        }
-                        time += 1;
+                        bestLength = currBestLength;
+                        bestTrail = currBestTrail;
+                        listBox1.Items.Add("Новый лучший путь " + (bestLength * 1.35 * coef).ToString("F1") + " Итерация:  " + time);
                     }
+                    time += 1;
+                }
 
 
-                    listBox1.Items.Add("\nЛучший путь:");
-                    string asa = "";
-                    for (int i = 0; i < bestTrail.Length; i++)
-                    {
+                listBox1.Items.Add("\nЛучший путь:");
+                string asa = "";
+                for (int i = 0; i < bestTrail.Length; i++)
+                {
                     asa += bestTrail[i] + " ";
-                    }
-                    listBox1.Items.Add(asa);
-
-                    listBox1.Items.Add("Длина лучшего пути " + (bestLength * 1.35 * coef).ToString("F1"));
-
-                    listBox1.Items.Add("Конец");
-                    
-
                 }
-                catch (Exception ex)
-                {
-                    listBox1.Items.Add(ex.Message);
-                }
+                listBox1.Items.Add(asa);
+
+                listBox1.Items.Add("Длина лучшего пути " + (bestLength * 1.35 * coef).ToString("F1"));
+
+                listBox1.Items.Add("Конец");
+
 
             }
-
-
-            private static int[][] InitAnts(int numAnts, int numCities)
+            catch (Exception ex)
             {
-                int[][] ants = new int[numAnts][];
-                for (int k = 0; k <= numAnts - 1; k++)
-                {
-                    int start = random.Next(0, numCities);
-                    ants[k] = RandomTrail(start, numCities);
-                }
-                return ants;
+                listBox1.Items.Add(ex.Message);
             }
 
-            private static int[] RandomTrail(int start, int numCities)
+        }
+
+
+        private static int[][] InitAnts(int numAnts, int numCities)
+        {
+            int[][] ants = new int[numAnts][];
+            for (int k = 0; k <= numAnts - 1; k++)
             {
-                int[] trail = new int[numCities];
+                int start = random.Next(0, numCities);
+                ants[k] = RandomTrail(start, numCities);
+            }
+            return ants;
+        }
 
-                
-                for (int i = 0; i <= numCities - 1; i++)
-                {
-                    trail[i] = i;
-                }
+        private static int[] RandomTrail(int start, int numCities)
+        {
+            int[] trail = new int[numCities];
 
-                for (int i = 0; i <= numCities - 1; i++)
-                {
-                    int r = random.Next(i, numCities);
-                    int tmp = trail[r];
-                    trail[r] = trail[i];
-                    trail[i] = tmp;
-                }
 
-                int idx = IndexOfTarget(trail, start);
-                int temp = trail[0];
-                trail[0] = trail[idx];
-                trail[idx] = temp;
-
-                return trail;
+            for (int i = 0; i <= numCities - 1; i++)
+            {
+                trail[i] = i;
             }
 
-            private static int IndexOfTarget(int[] trail, int target)
+            for (int i = 0; i <= numCities - 1; i++)
             {
-                for (int i = 0; i <= trail.Length - 1; i++)
-                {
-                    if (trail[i] == target)
-                    {
-                        return i;
-                    }
-                }
-                throw new Exception("error");
+                int r = random.Next(i, numCities);
+                int tmp = trail[r];
+                trail[r] = trail[i];
+                trail[i] = tmp;
             }
 
-            private static double Length(int[] trail, double[][] dists)
+            int idx = IndexOfTarget(trail, start);
+            int temp = trail[0];
+            trail[0] = trail[idx];
+            trail[idx] = temp;
+
+            return trail;
+        }
+
+        private static int IndexOfTarget(int[] trail, int target)
+        {
+            for (int i = 0; i <= trail.Length - 1; i++)
             {
-                double result = 0.0;
-                for (int i = 0; i <= trail.Length - 2; i++)
+                if (trail[i] == target)
                 {
-                    result += Distance(trail[i], trail[i + 1], dists);
-                }
-                return result;
-            }
-
-
-            private static int[] BestTrail(int[][] ants, double[][] dists)
-            {
-                double bestLength = Length(ants[0], dists);
-                int idxBestLength = 0;
-                for (int k = 1; k <= ants.Length - 1; k++)
-                {
-                    double len = Length(ants[k], dists);
-                    if (len < bestLength)
-                    {
-                        bestLength = len;
-                        idxBestLength = k;
-                    }
-                }
-                int numCities = ants[0].Length;
-                int[] bestTrail_Renamed = new int[numCities];
-                ants[idxBestLength].CopyTo(bestTrail_Renamed, 0);
-                return bestTrail_Renamed;
-            }
-
-
-            private static double[][] InitPheromones(int numCities)
-            {
-                double[][] pheromones = new double[numCities][];
-                for (int i = 0; i <= numCities - 1; i++)
-                {
-                    pheromones[i] = new double[numCities];
-                }
-                for (int i = 0; i <= pheromones.Length - 1; i++)
-                {
-                    for (int j = 0; j <= pheromones[i].Length - 1; j++)
-                    {
-                        pheromones[i][j] = 0.01;
-                    }
-                }
-                return pheromones;
-            }
-
-
-            private static void UpdateAnts(int[][] ants, double[][] pheromones, double[][] dists)
-            {
-                int numCities = pheromones.Length;
-                for (int k = 0; k <= ants.Length - 1; k++)
-                {
-                    int start = random.Next(0, numCities);
-                    int[] newTrail = BuildTrail(k, start, pheromones, dists);
-                    ants[k] = newTrail;
+                    return i;
                 }
             }
+            throw new Exception("error");
+        }
 
-            private static int[] BuildTrail(int k, int start, double[][] pheromones, double[][] dists)
+        private static double Length(int[] trail, double[][] dists)
+        {
+            double result = 0.0;
+            for (int i = 0; i <= trail.Length - 2; i++)
             {
-                int numCities = pheromones.Length;
-                int[] trail = new int[numCities];
-                bool[] visited = new bool[numCities];
-                trail[0] = start;
-                visited[start] = true;
-                for (int i = 0; i <= numCities - 2; i++)
-                {
-                    int cityX = trail[i];
-                    int next = NextCity(k, cityX, visited, pheromones, dists);
-                    trail[i + 1] = next;
-                    visited[next] = true;
-                }
-                return trail;
+                result += Distance(trail[i], trail[i + 1], dists);
             }
+            return result;
+        }
 
-            private static int NextCity(int k, int cityX, bool[] visited, double[][] pheromones, double[][] dists)
+
+        private static int[] BestTrail(int[][] ants, double[][] dists)
+        {
+            double bestLength = Length(ants[0], dists);
+            int idxBestLength = 0;
+            for (int k = 1; k <= ants.Length - 1; k++)
             {
-                double[] probs = MoveProbs(k, cityX, visited, pheromones, dists);
-
-                double[] cumul = new double[probs.Length + 1];
-                for (int i = 0; i <= probs.Length - 1; i++)
+                double len = Length(ants[k], dists);
+                if (len < bestLength)
                 {
-                    cumul[i + 1] = cumul[i] + probs[i];
-                }
-
-                double p = random.NextDouble();
-
-                for (int i = 0; i <= cumul.Length - 2; i++)
-                {
-                    if (p >= cumul[i] && p < cumul[i + 1])
-                    {
-                        return i;
-                    }
-                }
-                throw new Exception("fail");
-            }
-
-            private static double[] MoveProbs(int k, int cityX, bool[] visited, double[][] pheromones, double[][] dists)
-            {
-                int numCities = pheromones.Length;
-                double[] taueta = new double[numCities];
-                double sum = 0.0;
-                for (int i = 0; i <= taueta.Length - 1; i++)
-                {
-                    if (i == cityX)
-                    {
-                        taueta[i] = 0.0;
-                    }
-                    else if (visited[i] == true)
-                    {
-                        taueta[i] = 0.0;
-                    }
-                    else
-                    {
-                        taueta[i] = Math.Pow(pheromones[cityX][i], alpha) * Math.Pow((1.0 / Distance(cityX, i, dists)), beta);
-                        if (taueta[i] < 0.0001)
-                        {
-                            taueta[i] = 0.0001;
-                        }
-                        else if (taueta[i] > (double.MaxValue / (numCities * 100)))
-                        {
-                            taueta[i] = double.MaxValue / (numCities * 100);
-                        }
-                    }
-                    sum += taueta[i];
-                }
-
-                double[] probs = new double[numCities];
-                for (int i = 0; i <= probs.Length - 1; i++)
-                {
-                    probs[i] = taueta[i] / sum;
-                }
-                return probs;
-            }
-
-
-            private static void UpdatePheromones(double[][] pheromones, int[][] ants, double[][] dists)
-            {
-                for (int i = 0; i <= pheromones.Length - 1; i++)
-                {
-                    for (int j = i + 1; j <= pheromones[i].Length - 1; j++)
-                    {
-                        for (int k = 0; k <= ants.Length - 1; k++)
-                        {
-                            double length = Length(ants[k], dists);
-                            double decrease = (1.0 - rho) * pheromones[i][j];
-                            double increase = 0.0;
-                            if (EdgeInTrail(i, j, ants[k]) == true)
-                            {
-                                increase = (Q / length);
-                            }
-
-                            pheromones[i][j] = decrease + increase;
-
-                            if (pheromones[i][j] < 0.0001)
-                            {
-                                pheromones[i][j] = 0.0001;
-                            }
-                            else if (pheromones[i][j] > 100000.0)
-                            {
-                                pheromones[i][j] = 100000.0;
-                            }
-
-                            pheromones[j][i] = pheromones[i][j];
-                        }
-                    }
+                    bestLength = len;
+                    idxBestLength = k;
                 }
             }
+            int numCities = ants[0].Length;
+            int[] bestTrail_Renamed = new int[numCities];
+            ants[idxBestLength].CopyTo(bestTrail_Renamed, 0);
+            return bestTrail_Renamed;
+        }
 
-            private static bool EdgeInTrail(int cityX, int cityY, int[] trail)
+
+        private static double[][] InitPheromones(int numCities)
+        {
+            double[][] pheromones = new double[numCities][];
+            for (int i = 0; i <= numCities - 1; i++)
             {
-                int lastIndex = trail.Length - 1;
-                int idx = IndexOfTarget(trail, cityX);
+                pheromones[i] = new double[numCities];
+            }
+            for (int i = 0; i <= pheromones.Length - 1; i++)
+            {
+                for (int j = 0; j <= pheromones[i].Length - 1; j++)
+                {
+                    pheromones[i][j] = 0.01;
+                }
+            }
+            return pheromones;
+        }
 
-                if (idx == 0 && trail[1] == cityY)
+
+        private static void UpdateAnts(int[][] ants, double[][] pheromones, double[][] dists)
+        {
+            int numCities = pheromones.Length;
+            for (int k = 0; k <= ants.Length - 1; k++)
+            {
+                int start = random.Next(0, numCities);
+                int[] newTrail = BuildTrail(k, start, pheromones, dists);
+                ants[k] = newTrail;
+            }
+        }
+
+        private static int[] BuildTrail(int k, int start, double[][] pheromones, double[][] dists)
+        {
+            int numCities = pheromones.Length;
+            int[] trail = new int[numCities];
+            bool[] visited = new bool[numCities];
+            trail[0] = start;
+            visited[start] = true;
+            for (int i = 0; i <= numCities - 2; i++)
+            {
+                int cityX = trail[i];
+                int next = NextCity(k, cityX, visited, pheromones, dists);
+                trail[i + 1] = next;
+                visited[next] = true;
+            }
+            return trail;
+        }
+
+        private static int NextCity(int k, int cityX, bool[] visited, double[][] pheromones, double[][] dists)
+        {
+            double[] probs = MoveProbs(k, cityX, visited, pheromones, dists);
+
+            double[] cumul = new double[probs.Length + 1];
+            for (int i = 0; i <= probs.Length - 1; i++)
+            {
+                cumul[i + 1] = cumul[i] + probs[i];
+            }
+
+            double p = random.NextDouble();
+
+            for (int i = 0; i <= cumul.Length - 2; i++)
+            {
+                if (p >= cumul[i] && p < cumul[i + 1])
                 {
-                    return true;
+                    return i;
                 }
-                else if (idx == 0 && trail[lastIndex] == cityY)
+            }
+            throw new Exception("fail");
+        }
+
+        private static double[] MoveProbs(int k, int cityX, bool[] visited, double[][] pheromones, double[][] dists)
+        {
+            int numCities = pheromones.Length;
+            double[] taueta = new double[numCities];
+            double sum = 0.0;
+            for (int i = 0; i <= taueta.Length - 1; i++)
+            {
+                if (i == cityX)
                 {
-                    return true;
+                    taueta[i] = 0.0;
                 }
-                else if (idx == 0)
+                else if (visited[i] == true)
                 {
-                    return false;
-                }
-                else if (idx == lastIndex && trail[lastIndex - 1] == cityY)
-                {
-                    return true;
-                }
-                else if (idx == lastIndex && trail[0] == cityY)
-                {
-                    return true;
-                }
-                else if (idx == lastIndex)
-                {
-                    return false;
-                }
-                else if (trail[idx - 1] == cityY)
-                {
-                    return true;
-                }
-                else if (trail[idx + 1] == cityY)
-                {
-                    return true;
+                    taueta[i] = 0.0;
                 }
                 else
                 {
-                    return false;
+                    taueta[i] = Math.Pow(pheromones[cityX][i], alpha) * Math.Pow((1.0 / Distance(cityX, i, dists)), beta);
+                    if (taueta[i] < 0.0001)
+                    {
+                        taueta[i] = 0.0001;
+                    }
+                    else if (taueta[i] > (double.MaxValue / (numCities * 100)))
+                    {
+                        taueta[i] = double.MaxValue / (numCities * 100);
+                    }
+                }
+                sum += taueta[i];
+            }
+
+            double[] probs = new double[numCities];
+            for (int i = 0; i <= probs.Length - 1; i++)
+            {
+                probs[i] = taueta[i] / sum;
+            }
+            return probs;
+        }
+
+
+        private static void UpdatePheromones(double[][] pheromones, int[][] ants, double[][] dists)
+        {
+            for (int i = 0; i <= pheromones.Length - 1; i++)
+            {
+                for (int j = i + 1; j <= pheromones[i].Length - 1; j++)
+                {
+                    for (int k = 0; k <= ants.Length - 1; k++)
+                    {
+                        double length = Length(ants[k], dists);
+                        double decrease = (1.0 - rho) * pheromones[i][j];
+                        double increase = 0.0;
+                        if (EdgeInTrail(i, j, ants[k]) == true)
+                        {
+                            increase = (Q / length);
+                        }
+
+                        pheromones[i][j] = decrease + increase;
+
+                        if (pheromones[i][j] < 0.0001)
+                        {
+                            pheromones[i][j] = 0.0001;
+                        }
+                        else if (pheromones[i][j] > 100000.0)
+                        {
+                            pheromones[i][j] = 100000.0;
+                        }
+
+                        pheromones[j][i] = pheromones[i][j];
+                    }
                 }
             }
+        }
 
+        private static bool EdgeInTrail(int cityX, int cityY, int[] trail)
+        {
+            int lastIndex = trail.Length - 1;
+            int idx = IndexOfTarget(trail, cityX);
 
-
-            
-
-            private static double Distance(int cityX, int cityY, double[][] dists)
+            if (idx == 0 && trail[1] == cityY)
             {
-                return dists[cityX][cityY];
+                return true;
             }
+            else if (idx == 0 && trail[lastIndex] == cityY)
+            {
+                return true;
+            }
+            else if (idx == 0)
+            {
+                return false;
+            }
+            else if (idx == lastIndex && trail[lastIndex - 1] == cityY)
+            {
+                return true;
+            }
+            else if (idx == lastIndex && trail[0] == cityY)
+            {
+                return true;
+            }
+            else if (idx == lastIndex)
+            {
+                return false;
+            }
+            else if (trail[idx - 1] == cityY)
+            {
+                return true;
+            }
+            else if (trail[idx + 1] == cityY)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 
-            
 
 
-            
 
-            
+        private static double Distance(int cityX, int cityY, double[][] dists)
+        {
+            return dists[cityX][cityY];
+        }
+
+
+
+
+
+
+
+
         private void Button3_Click(object sender, EventArgs e)
         {
             //Solve();
