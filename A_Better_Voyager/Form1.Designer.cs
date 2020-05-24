@@ -129,7 +129,6 @@
             this.button3.Size = new System.Drawing.Size(197, 58);
             this.button3.TabIndex = 5;
             this.button3.Text = "Random";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.Random);
             // 
@@ -140,6 +139,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 26);
             this.textBox1.TabIndex = 6;
+            this.textBox1.Tag = "dont";
             this.textBox1.Text = "15";
             // 
             // FC
@@ -149,6 +149,7 @@
             this.FC.Name = "FC";
             this.FC.Size = new System.Drawing.Size(38, 26);
             this.FC.TabIndex = 10;
+            this.FC.Tag = "dont";
             this.FC.Text = "15";
             // 
             // SC
@@ -158,6 +159,7 @@
             this.SC.Name = "SC";
             this.SC.Size = new System.Drawing.Size(38, 26);
             this.SC.TabIndex = 11;
+            this.SC.Tag = "dont";
             this.SC.Text = "15";
             // 
             // button6
@@ -171,7 +173,6 @@
             this.button6.Size = new System.Drawing.Size(197, 58);
             this.button6.TabIndex = 12;
             this.button6.Text = "Distance";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
@@ -231,6 +232,7 @@
             this.Ants.Name = "Ants";
             this.Ants.Size = new System.Drawing.Size(65, 35);
             this.Ants.TabIndex = 18;
+            this.Ants.Tag = "dont";
             this.Ants.Text = "75";
             this.Ants.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -245,7 +247,6 @@
             this.button4.Size = new System.Drawing.Size(197, 58);
             this.button4.TabIndex = 7;
             this.button4.Text = "Solve";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.Button5_Click);
             // 
@@ -257,6 +258,7 @@
             this.Iter.Name = "Iter";
             this.Iter.Size = new System.Drawing.Size(65, 35);
             this.Iter.TabIndex = 19;
+            this.Iter.Tag = "dont";
             this.Iter.Text = "60";
             this.Iter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -292,6 +294,7 @@
             this.Seed.Name = "Seed";
             this.Seed.Size = new System.Drawing.Size(187, 35);
             this.Seed.TabIndex = 22;
+            this.Seed.Tag = "dont";
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
@@ -316,7 +319,6 @@
             this.button8.Size = new System.Drawing.Size(197, 58);
             this.button8.TabIndex = 25;
             this.button8.Text = "Colour";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.Button8_Click);
             // 
@@ -331,7 +333,6 @@
             this.button5.Size = new System.Drawing.Size(197, 58);
             this.button5.TabIndex = 26;
             this.button5.Text = "Help";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.Button5_Click_1);
             // 

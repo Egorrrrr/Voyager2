@@ -338,7 +338,10 @@ namespace A_Better_Voyager
             {
                 foreach (Control item in Controls)
                 {
-                    item.BackColor = Color.LightGreen;
+                    if ((string)item.Tag != "dont")
+                    {
+                        item.BackColor = Color.LightGreen;
+                    }
                 }
                 help = true;
                 MessageBox.Show("Нажмите на интересующий элемент, чтобы получить информацию о нем\nЧтобы выйти из режима помощи снова нажмите на 'Help'");
@@ -348,7 +351,10 @@ namespace A_Better_Voyager
                 help = false;
                 foreach (Control item in Controls)
                 {
-                    item.BackColor = Color.Gray;
+                    if ((string)item.Tag != "dont")
+                    {
+                        item.BackColor = Color.Gray;
+                    }
                 }
             }
 
