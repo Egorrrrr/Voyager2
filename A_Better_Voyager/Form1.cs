@@ -65,19 +65,19 @@ namespace A_Better_Voyager
         private void Gridpnt(object sender, PaintEventArgs e)
         {
 
-            foreach(var s in Cities)
+            foreach (var s in Cities)
             {
-                e.Graphics.FillEllipse(Brushes.LightGreen, s.Value.X-3, s.Value.Y-3, 8, 8);
+                e.Graphics.FillEllipse(Brushes.LightGreen, s.Value.X - 3, s.Value.Y - 3, 8, 8);
             }
 
         }
-        
+
 
         private void Panel2_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             //Cities.Add(cnt, e.Location);
             //cnt++;
-           //panel2.Invalidate();
+            //panel2.Invalidate();
 
         }
 
@@ -108,10 +108,10 @@ namespace A_Better_Voyager
             }
             Random a;
             int seed = 0;
-             bool ok =int.TryParse(Seed.Text, out seed);
+            bool ok = int.TryParse(Seed.Text, out seed);
             if (ok)
             {
-                 a = new Random(seed);
+                a = new Random(seed);
             }
             else
             {
@@ -126,9 +126,9 @@ namespace A_Better_Voyager
                 {
                     Point p = new Point(a.Next(0, 700), a.Next(0, 390));
                     Cities.Add(cnt++, p);
-                    
+
                 }
-                
+
                 panel2.Invalidate();
                 //ArrayBuild();
 
@@ -205,16 +205,16 @@ namespace A_Better_Voyager
                 ArrayBuild();
             }
             //NN.Show();
-            
+
         }
-       private static double GetDistance(double x1, double y1, double x2, double y2)
+        private static double GetDistance(double x1, double y1, double x2, double y2)
         {
             return Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2));
         }
         public void ArrayBuild()
         {
-            
-            int r = 0;
+
+            // int r = 0;
             string aa = "";
             dists = new double[Cities.Count][];
             for (int i = 0; i < dists.Length; i++)
@@ -232,8 +232,8 @@ namespace A_Better_Voyager
                     {
                         dists[i][j] = 0;
                     }
-                    aa += dists[i][j].ToString() + " "; 
-                    
+                    aa += dists[i][j].ToString() + " ";
+
                 }
                 aa += "\n";
             }
@@ -242,21 +242,21 @@ namespace A_Better_Voyager
             int.TryParse(Ants.Text, out int ants);
             if (iter > 0 && ants > 0)
             {
-               label2.Text = OutPut(AntColonyProgram.Solve(dists, Cities.Count, ants, iter, out ll));
+                label2.Text = OutPut(AntColonyProgram.Solve(dists, Cities.Count, ants, iter, out ll));
             }
             //label3.Text = ll.ToString();
-            
+
             //NN.AddFromMap(dists);
         }
         public string OutPut(int[] a)
         {
-             double dst = 0;
-           
+            double dst = 0;
+
             string aa = "";
             Pen pp = new Pen(Brushes.Blue);
             Pen pp2 = new Pen(Brushes.Yellow);
 
-           // cts.DrawEllipse(pp2, Cities[a.Length].X-7, Cities[a.Length-1].Y-7, 15, 15);
+            // cts.DrawEllipse(pp2, Cities[a.Length].X-7, Cities[a.Length-1].Y-7, 15, 15);
 
             for (int i = 1; i < a.Length; i++)
             {
@@ -264,7 +264,7 @@ namespace A_Better_Voyager
                 Point p2;
                 Cities.TryGetValue(a[i - 1], out p1);
                 Cities.TryGetValue(a[i], out p2);
-                if(i == 1)
+                if (i == 1)
                 {
                     cts.FillEllipse(Brushes.Blue, p1.X - 7, p1.Y - 7, 15, 15);
 
@@ -274,12 +274,12 @@ namespace A_Better_Voyager
 
 
             }
-            aa = (Math.Round(dst,0)).ToString();
+            aa = (Math.Round(dst, 0)).ToString();
             label3.Text = aa;
             return aa;
 
         }
-        
+
         private void TextBox2_TextChanged(object sender, EventArgs e)
         {
 
@@ -351,7 +351,7 @@ namespace A_Better_Voyager
                     item.BackColor = Color.Gray;
                 }
             }
-            
+
         }
 
         private void Label1_Click(object sender, EventArgs e)
