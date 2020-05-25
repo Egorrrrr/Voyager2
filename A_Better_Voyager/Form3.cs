@@ -38,6 +38,11 @@ namespace A_Better_Voyager
 
         private void Form3_Load(object sender, EventArgs e)
         {
+            string[] files = Directory.GetFiles(".", "*.txt");
+            foreach (var item in files)
+            {
+                listBox2.Items.Add(item.ToString());
+            }
 
         }
 
@@ -507,6 +512,15 @@ namespace A_Better_Voyager
         private void Label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ListBox2_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int a = listBox2.SelectedIndex;
+            if (a != -1)
+            {
+                ToArray(@listBox2.Items[a].ToString());
+            }
         }
     }
 }
