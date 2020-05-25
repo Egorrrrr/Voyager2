@@ -150,8 +150,8 @@ namespace A_Better_Voyager
 
                 listBox1.Items.Add("Альфа(влияние феромона) = " + alpha);
                 listBox1.Items.Add("Бета(влияние дистанции) = " + beta);
-                listBox1.Items.Add("Коэффициент испарения феромона= " + rho.ToString("F2"));
-                listBox1.Items.Add("Q(Коэффициент выделения феромона) = " + Q.ToString("F2"));
+                listBox1.Items.Add("Коэффициент испарения феромона= " + rho.ToString());
+                listBox1.Items.Add("Q(Коэффициент выделения феромона) = " + Q.ToString());
 
                 double[][] dists = ds;
 
