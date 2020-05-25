@@ -428,14 +428,14 @@ namespace A_Better_Voyager
 
                         pheromones[i][j] = decrease + increase;
 
-                        if (pheromones[i][j] < 0.0001)
-                        {
-                            pheromones[i][j] = 0.0001;
-                        }
-                        else if (pheromones[i][j] > 100000.0)
-                        {
-                            pheromones[i][j] = 100000.0;
-                        }
+                        //if (pheromones[i][j] < 0.0001)
+                        //{
+                        //    pheromones[i][j] = 0.0001;
+                        //}
+                        //else if (pheromones[i][j] > 100000.0)
+                        //{
+                        //    pheromones[i][j] = 100000.0;
+                        //}
 
                         pheromones[j][i] = pheromones[i][j];
                     }
