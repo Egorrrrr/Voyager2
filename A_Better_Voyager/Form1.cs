@@ -37,6 +37,7 @@ namespace A_Better_Voyager
         {
             InitializeComponent();
             cts = panel2.CreateGraphics();
+            cts.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             cnt = 0;
             NN = new Form2();
             F3 = new Form3();
@@ -67,6 +68,7 @@ namespace A_Better_Voyager
 
             foreach (var s in Cities)
             {
+                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                 e.Graphics.FillEllipse(Brushes.LightGreen, s.Value.X - 3, s.Value.Y - 3, 8, 8);
             }
 
