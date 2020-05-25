@@ -14,6 +14,7 @@ namespace A_Better_Voyager
 {
     public partial class Form3 : Form
     {
+        private static bool cycle;
         private static Random random = new Random();
         private static int alpha = 4;
         private static int beta = 3;
@@ -34,6 +35,7 @@ namespace A_Better_Voyager
         public Form3()
         {
             InitializeComponent();
+            cycle = checkBox1.Checked;
         }
 
         private void Form3_Load(object sender, EventArgs e)
@@ -225,8 +227,8 @@ namespace A_Better_Voyager
 
         private static int[] RandomTrail(int start, int numCities)
         {
-            int[] trail = new int[numCities];
-
+            int[] trail;
+            trail = cycle ? new int[numCities + 1] : new int[numCities];
 
             for (int i = 0; i <= numCities - 1; i++)
             {
@@ -245,6 +247,10 @@ namespace A_Better_Voyager
             int temp = trail[0];
             trail[0] = trail[idx];
             trail[idx] = temp;
+            if (cycle)
+            {
+                trail[trail.Length - 1] = trail[0];
+            }
 
             return trail;
         }
@@ -323,8 +329,9 @@ namespace A_Better_Voyager
 
         private static int[] BuildTrail(int k, int start, double[][] pheromones, double[][] dists)
         {
+            int[] trail;
             int numCities = pheromones.Length;
-            int[] trail = new int[numCities];
+            trail = cycle ? new int[numCities + 1] : new int[numCities];
             bool[] visited = new bool[numCities];
             trail[0] = start;
             visited[start] = true;
@@ -334,6 +341,10 @@ namespace A_Better_Voyager
                 int next = NextCity(k, cityX, visited, pheromones, dists);
                 trail[i + 1] = next;
                 visited[next] = true;
+            }
+            if (cycle)
+            {
+                trail[trail.Length - 1] = trail[0];
             }
             return trail;
         }
@@ -523,6 +534,30 @@ namespace A_Better_Voyager
             }
         }
 
-        
+        private void Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void Panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            cycle = checkBox1.Checked;
+        }
     }
 }
