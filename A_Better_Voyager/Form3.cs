@@ -522,5 +522,7 @@ namespace A_Better_Voyager
                 ToArray(@listBox2.Items[a].ToString());
             }
         }
+
+        
     }
 }
