@@ -39,12 +39,10 @@ namespace A_Better_Voyager
             cts = panel2.CreateGraphics();
             cts.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             cnt = 0;
-            NN = new Form2();
             F3 = new Form3();
         }
         Pen peen = new Pen(Brushes.LightBlue, 2);
         double[][] dists;
-        Form2 NN;
         Graphics cts;
         Dictionary<int, Point> Cities = new Dictionary<int, Point>();
         int cnt;
@@ -77,9 +75,7 @@ namespace A_Better_Voyager
 
         private void Panel2_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            //Cities.Add(cnt, e.Location);
-            //cnt++;
-            //panel2.Invalidate();
+            
 
         }
 
@@ -132,7 +128,6 @@ namespace A_Better_Voyager
                 }
 
                 panel2.Invalidate();
-                //ArrayBuild();
 
             }
             catch (Exception)
@@ -141,60 +136,7 @@ namespace A_Better_Voyager
             }
         }
 
-        //private void Button4_Click(object sender, EventArgs e)
-        //{
-        //    if (Cities.Count > 0)
-        //    {
-        //        //label2.Text = 10000.ToString();
-        //        int iss = 0;
-        //        while (iss < 1)
-        //        {
-        //            iss++;
-        //            double total = 0;
-        //            cts.Clear(Color.Gray);
-        //            foreach (var s in Cities)
-        //            {
-        //                cts.FillEllipse(Brushes.LightGreen, s.Value.X - 4, s.Value.Y - 4, 8, 8);
-        //            }
-        //            Pen pen = new Pen(Brushes.LightBlue, 2);
-        //            Random a = new Random();
-        //            List<Point> arr = new List<Point>(Cities.Values);
-        //            List<Point> rand = arr.OrderBy(x => a.Next()).ToArray().ToList();
-        //            Point prev = rand[0];
-        //            Point closest = new Point(0, 0);
-        //            int iter = rand.Count;
-        //            double data = 0;
-        //            for (int i = 0; i < iter; i++)
-        //            {
-        //                double minval = double.MaxValue;
-        //                for (int j = 0; j < rand.Count; j++)
-        //                {
-        //                    double dst = GetDistance(prev.X, prev.Y, rand[j].X, rand[j].Y);
-        //                    if (dst < minval && dst != 0)
-        //                    {
-        //                        minval = dst;
-        //                        closest = rand[j];
-        //                        data = minval;
-
-        //                    }
-        //                }
-        //                total += data;
-        //                cts.DrawLine(pen, prev, closest);
-        //                rand.Remove(prev);
-        //                prev = closest;
-        //                minval = double.MaxValue;
-
-
-        //            }
-        //            if (total < double.Parse(label2.Text))
-        //            {
-        //                label2.Text = Math.Round(total, 0).ToString();
-        //            }
-        //        }
-        //    }
-
-        //}
-
+        
         private void Button5_Click(object sender, EventArgs e)
         {
             if (help)
@@ -246,9 +188,7 @@ namespace A_Better_Voyager
             {
                 label2.Text = OutPut(AntColonyProgram.Solve(dists, Cities.Count, ants, iter, out ll));
             }
-            //label3.Text = ll.ToString();
 
-            //NN.AddFromMap(dists);
         }
         public string OutPut(int[] a)
         {
@@ -258,7 +198,6 @@ namespace A_Better_Voyager
             Pen pp = new Pen(Brushes.Blue);
             Pen pp2 = new Pen(Brushes.Yellow);
 
-            // cts.DrawEllipse(pp2, Cities[a.Length].X-7, Cities[a.Length-1].Y-7, 15, 15);
 
             for (int i = 1; i < a.Length; i++)
             {
