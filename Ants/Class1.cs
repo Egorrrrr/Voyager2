@@ -210,12 +210,12 @@ namespace AntColony
             for (int k = 0; k <= ants.Length - 1; k++)
             {
                 int start = random.Next(0, numCities);
-                int[] newTrail = BuildTrail(k, start, pheromones, dists);
+                int[] newTrail = BuildTrail(start, pheromones, dists);
                 ants[k] = newTrail;
             }
         }
 
-        private static int[] BuildTrail(int k, int start, double[][] pheromones, double[][] dists)
+        private static int[] BuildTrail(int start, double[][] pheromones, double[][] dists)
         {
             int numCities = pheromones.Length;
             int[] trail = new int[numCities];
@@ -225,7 +225,7 @@ namespace AntColony
             for (int i = 0; i <= numCities - 2; i++)
             {
                 int cityX = trail[i];
-                int next = NextCity(k, cityX, visited, pheromones, dists);
+                int next = NextCity(cityX, visited, pheromones, dists);
                 trail[i + 1] = next;
                 visited[next] = true;
             }
@@ -241,9 +241,9 @@ namespace AntColony
         /// <param name="pheromones"></param>
         /// <param name="dists"></param>
         /// <returns></returns>
-        private static int NextCity(int k, int cityX, bool[] visited, double[][] pheromones, double[][] dists)
+        private static int NextCity(int cityX, bool[] visited, double[][] pheromones, double[][] dists)
         {
-            double[] probs = MoveProbs(k, cityX, visited, pheromones, dists);
+            double[] probs = MoveProbs(cityX, visited, pheromones, dists);
 
             double[] cumul = new double[probs.Length + 1];
             for (int i = 0; i <= probs.Length - 1; i++)
@@ -271,7 +271,7 @@ namespace AntColony
         /// <param name="pheromones"></param>
         /// <param name="dists"></param>
         /// <returns></returns>
-        private static double[] MoveProbs(int k, int cityX, bool[] visited, double[][] pheromones, double[][] dists)
+        private static double[] MoveProbs(int cityX, bool[] visited, double[][] pheromones, double[][] dists)
         {
             int numCities = pheromones.Length;
             double[] taueta = new double[numCities];
