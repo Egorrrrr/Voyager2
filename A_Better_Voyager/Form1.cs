@@ -215,7 +215,7 @@ namespace A_Better_Voyager
             int.TryParse(beta.Text, out int be);
             Stopwatch st = new Stopwatch();
             TimeSpan time = new TimeSpan();
-            if (iter > 0 && ants > 0 && al> 0 && be >0)
+            if (iter > 0 && ants > 0 && al>= 0 && be >=0)
             {
                 st.Start();
                 int[] trail = AntColonyProgram.Solve(dists, Cities.Count, ants, iter, al , be, out ll);

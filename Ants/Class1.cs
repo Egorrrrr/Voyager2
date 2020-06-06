@@ -66,9 +66,8 @@ namespace AntColony
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 Console.ReadLine();
-                throw new Exception("error");
+                throw new Exception(ex.Message);
             }
 
         }
@@ -131,7 +130,7 @@ namespace AntColony
                     return i;
                 }
             }
-            throw new Exception("ошибка");
+            throw new Exception("ошибка0");
         }
         /// <summary>
         /// Длина маршурта
@@ -261,7 +260,7 @@ namespace AntColony
                     return i;
                 }
             }
-            throw new Exception("Error");
+            throw new Exception("Error1");
         }
         /// <summary>
         /// Возвращает вероятность путешествия в город Х
