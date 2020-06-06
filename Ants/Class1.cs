@@ -13,18 +13,19 @@ namespace AntColony
         
 
         private static Random random = new Random();
-        private static int alpha = 4;
-        private static int beta = 3;
+        private static int alpha = 1;
+        private static int beta = 1;
 
         private static double Decay = 0.005;
-        private static double Q = 200000.0;
+        private static double Q = 200000;
 
-        public static int[] Solve(double[][] dsts, int cts,int numberants, int iterations, out int best)
+        public static int[] Solve(double[][] dsts, int cts,int numberants, int iterations,int alph, int bet , out int best)
         {
             try
             {
 
-                
+                alpha = alph;
+                beta = bet; 
                 
                 int numCities = cts;
                 int numAnts = numberants;
@@ -327,7 +328,7 @@ namespace AntColony
                 {
                     for (int k = 0; k <= ants.Length - 1; k++)
                     {
-                        double length = AntColonyProgram.Length(ants[k], dists);
+                        double length = Length(ants[k], dists);
                         double decrease = (1.0 - Decay) * pheromones[i][j];
                         double increase = 0.0;
                         if (EdgeInTrail(i, j, ants[k]) == true)
@@ -336,16 +337,6 @@ namespace AntColony
                         }
 
                         pheromones[i][j] = decrease + increase;
-
-                        //if (pheromones[i][j] < 0.0001)
-                        //{
-                        //    pheromones[i][j] = 0.0001;
-                        //}
-                        //else if (pheromones[i][j] > 100000.0)
-                        //{
-                        //    pheromones[i][j] = 100000.0;
-                        //}
-                        
                         pheromones[j][i] = pheromones[i][j];
                     }
                 }

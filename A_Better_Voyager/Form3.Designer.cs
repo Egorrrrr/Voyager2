@@ -43,6 +43,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.bet = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.alp = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +54,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(777, 27);
             this.panel1.TabIndex = 5;
@@ -65,7 +69,7 @@
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(773, 0);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(76, 27);
             this.button2.TabIndex = 6;
@@ -80,7 +84,7 @@
             this.listBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(2, 44);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBox1.Name = "listBox1";
             this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.listBox1.Size = new System.Drawing.Size(455, 407);
@@ -100,7 +104,7 @@
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.button6.Location = new System.Drawing.Point(459, 44);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
+            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(162, 38);
             this.button6.TabIndex = 13;
@@ -113,7 +117,7 @@
             // 
             this.Ants.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.Ants.Location = new System.Drawing.Point(459, 113);
-            this.Ants.Margin = new System.Windows.Forms.Padding(2);
+            this.Ants.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Ants.Name = "Ants";
             this.Ants.Size = new System.Drawing.Size(163, 20);
             this.Ants.TabIndex = 14;
@@ -121,33 +125,33 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Gray;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label1.Location = new System.Drawing.Point(499, 92);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 20);
+            this.label1.Size = new System.Drawing.Size(83, 19);
             this.label1.TabIndex = 15;
             this.label1.Text = "Муравьи";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Gray;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label2.Location = new System.Drawing.Point(499, 162);
+            this.label2.Location = new System.Drawing.Point(501, 135);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 20);
             this.label2.TabIndex = 17;
             this.label2.Text = "Итерации";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Iters
             // 
             this.Iters.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.Iters.Location = new System.Drawing.Point(459, 183);
-            this.Iters.Margin = new System.Windows.Forms.Padding(2);
+            this.Iters.Location = new System.Drawing.Point(459, 156);
+            this.Iters.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Iters.Name = "Iters";
             this.Iters.Size = new System.Drawing.Size(163, 20);
             this.Iters.TabIndex = 16;
@@ -160,10 +164,10 @@
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Location = new System.Drawing.Point(459, 222);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Location = new System.Drawing.Point(461, 295);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(163, 228);
+            this.panel2.Size = new System.Drawing.Size(160, 155);
             this.panel2.TabIndex = 18;
             this.panel2.DragDrop += new System.Windows.Forms.DragEventHandler(this.Panel2_DragDrop);
             this.panel2.DragEnter += new System.Windows.Forms.DragEventHandler(this.Panel2_DragEnter);
@@ -179,6 +183,7 @@
             this.label6.TabIndex = 2;
             this.label6.Text = "Или выбрать задачу справа -->";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label6.Click += new System.EventHandler(this.Label6_Click);
             // 
             // label5
             // 
@@ -212,7 +217,7 @@
             this.listBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.listBox2.FormattingEnabled = true;
             this.listBox2.Location = new System.Drawing.Point(628, 40);
-            this.listBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.listBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(198, 407);
             this.listBox2.TabIndex = 20;
@@ -221,7 +226,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(475, 138);
+            this.checkBox1.Location = new System.Drawing.Point(482, 273);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(127, 17);
             this.checkBox1.TabIndex = 21;
@@ -229,12 +234,60 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.Gray;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label3.Location = new System.Drawing.Point(501, 227);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 20);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Beta";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // bet
+            // 
+            this.bet.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.bet.Location = new System.Drawing.Point(461, 248);
+            this.bet.Margin = new System.Windows.Forms.Padding(2);
+            this.bet.Name = "bet";
+            this.bet.Size = new System.Drawing.Size(163, 20);
+            this.bet.TabIndex = 24;
+            this.bet.Text = "1";
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.Gray;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label7.Location = new System.Drawing.Point(501, 184);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(83, 20);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Alpha";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // alp
+            // 
+            this.alp.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.alp.Location = new System.Drawing.Point(461, 205);
+            this.alp.Margin = new System.Windows.Forms.Padding(2);
+            this.alp.Name = "alp";
+            this.alp.Size = new System.Drawing.Size(163, 20);
+            this.alp.TabIndex = 22;
+            this.alp.Text = "1";
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(837, 462);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.bet);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.alp);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.button2);
@@ -247,7 +300,7 @@
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form3";
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.Form3_Load);
@@ -273,5 +326,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox bet;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox alp;
     }
 }

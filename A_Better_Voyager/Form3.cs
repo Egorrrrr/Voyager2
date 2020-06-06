@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
@@ -12,18 +13,20 @@ using System.Text.RegularExpressions;
 
 namespace A_Better_Voyager
 {
+    
     public partial class Form3 : Form
     {
         private static bool cycle;
         private static Random random = new Random();
-        private static int alpha = 4;
-        private static int beta = 3;
+        private static int alpha = 1;
+        private static int beta = 1;
 
         private static double rho = 0.005;
         private static double Q = 200000;
 
         protected override CreateParams CreateParams
         {
+            
             get
             {
                 const int CS_DROPSHADOW = 0x20000;
@@ -45,6 +48,7 @@ namespace A_Better_Voyager
             {
                 listBox2.Items.Add(item.ToString());
             }
+
 
         }
 
@@ -133,14 +137,17 @@ namespace A_Better_Voyager
 
             try
             {
-
+                Stopwatch sWatch = new Stopwatch();
+                TimeSpan tSpan = new TimeSpan();
                 double[][] arr = new double[ds.Length][];
                 ds.CopyTo(arr, 0);
-                if (!uint.TryParse(Ants.Text, out uint aants) || !uint.TryParse(Iters.Text, out uint iters))
+                if (!uint.TryParse(Ants.Text, out uint aants) || !uint.TryParse(Iters.Text, out uint iters) || !uint.TryParse(alp.Text, out uint alpa) || !uint.TryParse(bet.Text, out uint betaa))
                 {
-                    MessageBox.Show("Возможны ошибки в полях: 'Итерации' или 'Муравьи'");
+                    MessageBox.Show("Возможны ошибки в полях: 'Итерации', 'Муравьи', 'Alpha' или 'Beta'");
                     return;
                 }
+                alpha = (int)alpa;
+                beta = (int)betaa;
               
 
                 listBox1.Items.Clear();
@@ -161,7 +168,7 @@ namespace A_Better_Voyager
                 listBox1.Items.Add("Q(Коэффициент выделения феромона) = " + Q.ToString());
 
                 double[][] dists = ds;
-
+                sWatch.Start();
                 listBox1.Items.Add("Создание муравьев...");
                 int[][] ants = InitAnts(numAnts, numCities);
 
@@ -190,7 +197,8 @@ namespace A_Better_Voyager
                     }
                     time += 1;
                 }
-
+                sWatch.Stop();
+                tSpan = sWatch.Elapsed;
 
                 listBox1.Items.Add("\nЛучший путь:");
                 string asa = "";
@@ -201,6 +209,7 @@ namespace A_Better_Voyager
                 listBox1.Items.Add(asa);
 
                 listBox1.Items.Add("Длина лучшего пути " + (bestLength).ToString("F1"));
+                listBox1.Items.Add("Время: " + tSpan.ToString());
 
                 listBox1.Items.Add("Конец");
 
@@ -558,6 +567,11 @@ namespace A_Better_Voyager
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             cycle = checkBox1.Checked;
+        }
+
+        private void Label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

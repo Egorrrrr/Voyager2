@@ -36,9 +36,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.FC = new System.Windows.Forms.TextBox();
-            this.SC = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.rssdsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +51,10 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.button8 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.alpha = new System.Windows.Forms.TextBox();
+            this.beta = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,9 +65,10 @@
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(1229, 0);
+            this.button1.Location = new System.Drawing.Point(819, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 33);
+            this.button1.Size = new System.Drawing.Size(54, 21);
             this.button1.TabIndex = 0;
             this.button1.Text = "X";
             this.button1.UseVisualStyleBackColor = false;
@@ -76,17 +78,19 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Gray;
             this.panel1.Location = new System.Drawing.Point(1, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1231, 33);
+            this.panel1.Size = new System.Drawing.Size(821, 21);
             this.panel1.TabIndex = 1;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel1_MouseDown);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Gray;
-            this.panel2.Location = new System.Drawing.Point(12, 51);
+            this.panel2.Location = new System.Drawing.Point(8, 33);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1066, 617);
+            this.panel2.Size = new System.Drawing.Size(711, 401);
             this.panel2.TabIndex = 2;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.Gridpnt);
             this.panel2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Panel2_MouseDoubleClick);
@@ -98,9 +102,10 @@
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(1103, 548);
+            this.button2.Location = new System.Drawing.Point(735, 356);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(197, 58);
+            this.button2.Size = new System.Drawing.Size(131, 38);
             this.button2.TabIndex = 3;
             this.button2.Text = "Clear";
             this.button2.UseVisualStyleBackColor = false;
@@ -110,9 +115,10 @@
             // 
             this.label1.BackColor = System.Drawing.Color.Gray;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(1099, 631);
+            this.label1.Location = new System.Drawing.Point(733, 410);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(201, 37);
+            this.label1.Size = new System.Drawing.Size(134, 24);
             this.label1.TabIndex = 4;
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.Label1_Click);
@@ -124,9 +130,10 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
             this.button3.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.button3.Location = new System.Drawing.Point(1103, 466);
+            this.button3.Location = new System.Drawing.Point(735, 303);
+            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(197, 58);
+            this.button3.Size = new System.Drawing.Size(131, 38);
             this.button3.TabIndex = 5;
             this.button3.Text = "Random";
             this.button3.UseVisualStyleBackColor = false;
@@ -135,55 +142,23 @@
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox1.Location = new System.Drawing.Point(1151, 437);
+            this.textBox1.Location = new System.Drawing.Point(767, 284);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 26);
+            this.textBox1.Size = new System.Drawing.Size(68, 20);
             this.textBox1.TabIndex = 6;
             this.textBox1.Tag = "dont";
             this.textBox1.Text = "15";
-            // 
-            // FC
-            // 
-            this.FC.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.FC.Location = new System.Drawing.Point(1104, 265);
-            this.FC.Name = "FC";
-            this.FC.Size = new System.Drawing.Size(38, 26);
-            this.FC.TabIndex = 10;
-            this.FC.Tag = "dont";
-            this.FC.Text = "15";
-            // 
-            // SC
-            // 
-            this.SC.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.SC.Location = new System.Drawing.Point(1262, 265);
-            this.SC.Name = "SC";
-            this.SC.Size = new System.Drawing.Size(38, 26);
-            this.SC.TabIndex = 11;
-            this.SC.Tag = "dont";
-            this.SC.Text = "15";
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.Gray;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
-            this.button6.Location = new System.Drawing.Point(1103, 297);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(197, 58);
-            this.button6.TabIndex = 12;
-            this.button6.Text = "Distance";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Gray;
             this.label2.ContextMenuStrip = this.contextMenuStrip1;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label2.Location = new System.Drawing.Point(1099, 193);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.label2.Location = new System.Drawing.Point(732, 193);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(202, 55);
+            this.label2.Size = new System.Drawing.Size(135, 36);
             this.label2.TabIndex = 13;
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.Click += new System.EventHandler(this.Label2_Click);
@@ -195,19 +170,20 @@
             this.rssdsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(126, 36);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
             // 
             // rssdsToolStripMenuItem
             // 
             this.rssdsToolStripMenuItem.Name = "rssdsToolStripMenuItem";
-            this.rssdsToolStripMenuItem.Size = new System.Drawing.Size(125, 32);
+            this.rssdsToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.rssdsToolStripMenuItem.Text = "rssds";
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(1137, 75);
+            this.label3.Location = new System.Drawing.Point(758, 49);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 23);
+            this.label3.Size = new System.Drawing.Size(55, 15);
             this.label3.TabIndex = 14;
             // 
             // button7
@@ -216,9 +192,10 @@
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button7.Location = new System.Drawing.Point(12, 683);
+            this.button7.Location = new System.Drawing.Point(8, 444);
+            this.button7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(197, 58);
+            this.button7.Size = new System.Drawing.Size(131, 38);
             this.button7.TabIndex = 15;
             this.button7.Text = "Solve .txt";
             this.button7.UseVisualStyleBackColor = false;
@@ -228,9 +205,10 @@
             // 
             this.Ants.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.Ants.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Ants.Location = new System.Drawing.Point(1101, 150);
+            this.Ants.Location = new System.Drawing.Point(734, 97);
+            this.Ants.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Ants.Name = "Ants";
-            this.Ants.Size = new System.Drawing.Size(65, 35);
+            this.Ants.Size = new System.Drawing.Size(45, 26);
             this.Ants.TabIndex = 18;
             this.Ants.Tag = "dont";
             this.Ants.Text = "75";
@@ -242,9 +220,10 @@
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
-            this.button4.Location = new System.Drawing.Point(1104, 373);
+            this.button4.Location = new System.Drawing.Point(736, 242);
+            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(197, 58);
+            this.button4.Size = new System.Drawing.Size(131, 38);
             this.button4.TabIndex = 7;
             this.button4.Text = "Solve";
             this.button4.UseVisualStyleBackColor = false;
@@ -254,9 +233,10 @@
             // 
             this.Iter.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.Iter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Iter.Location = new System.Drawing.Point(1101, 109);
+            this.Iter.Location = new System.Drawing.Point(734, 71);
+            this.Iter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Iter.Name = "Iter";
-            this.Iter.Size = new System.Drawing.Size(65, 35);
+            this.Iter.Size = new System.Drawing.Size(45, 26);
             this.Iter.TabIndex = 19;
             this.Iter.Tag = "dont";
             this.Iter.Text = "60";
@@ -266,9 +246,10 @@
             // 
             this.label4.BackColor = System.Drawing.Color.Gray;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label4.Location = new System.Drawing.Point(1172, 109);
+            this.label4.Location = new System.Drawing.Point(781, 71);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(118, 35);
+            this.label4.Size = new System.Drawing.Size(79, 23);
             this.label4.TabIndex = 20;
             this.label4.Text = "Итерации";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -278,9 +259,10 @@
             // 
             this.label5.BackColor = System.Drawing.Color.Gray;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label5.Location = new System.Drawing.Point(1172, 150);
+            this.label5.Location = new System.Drawing.Point(781, 97);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(118, 35);
+            this.label5.Size = new System.Drawing.Size(79, 23);
             this.label5.TabIndex = 21;
             this.label5.Text = "Муравьи";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -290,9 +272,10 @@
             // 
             this.Seed.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.Seed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.Seed.Location = new System.Drawing.Point(1103, 68);
+            this.Seed.Location = new System.Drawing.Point(735, 44);
+            this.Seed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Seed.Name = "Seed";
-            this.Seed.Size = new System.Drawing.Size(187, 35);
+            this.Seed.Size = new System.Drawing.Size(126, 26);
             this.Seed.TabIndex = 22;
             this.Seed.Tag = "dont";
             this.Seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -301,9 +284,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label6.Location = new System.Drawing.Point(1161, 36);
+            this.label6.Location = new System.Drawing.Point(774, 23);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(71, 29);
+            this.label6.Size = new System.Drawing.Size(47, 20);
             this.label6.TabIndex = 23;
             this.label6.Text = "Seed";
             this.label6.Click += new System.EventHandler(this.Label6_Click);
@@ -314,9 +298,10 @@
             this.button8.FlatAppearance.BorderSize = 0;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
-            this.button8.Location = new System.Drawing.Point(259, 683);
+            this.button8.Location = new System.Drawing.Point(173, 444);
+            this.button8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(197, 58);
+            this.button8.Size = new System.Drawing.Size(131, 38);
             this.button8.TabIndex = 25;
             this.button8.Text = "Colour";
             this.button8.UseVisualStyleBackColor = false;
@@ -328,20 +313,77 @@
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Microsoft YaHei", 15F);
-            this.button5.Location = new System.Drawing.Point(516, 683);
+            this.button5.Location = new System.Drawing.Point(344, 444);
+            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(197, 58);
+            this.button5.Size = new System.Drawing.Size(131, 38);
             this.button5.TabIndex = 26;
             this.button5.Text = "Help";
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.Button5_Click_1);
             // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.Gray;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label7.Location = new System.Drawing.Point(781, 156);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 23);
+            this.label7.TabIndex = 30;
+            this.label7.Text = "Beta";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label7.Click += new System.EventHandler(this.Label7_Click);
+            // 
+            // label8
+            // 
+            this.label8.BackColor = System.Drawing.Color.Gray;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label8.Location = new System.Drawing.Point(781, 130);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(79, 23);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "Alpha";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label8.Click += new System.EventHandler(this.Label8_Click);
+            // 
+            // alpha
+            // 
+            this.alpha.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.alpha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.alpha.Location = new System.Drawing.Point(734, 130);
+            this.alpha.Margin = new System.Windows.Forms.Padding(2);
+            this.alpha.Name = "alpha";
+            this.alpha.Size = new System.Drawing.Size(45, 26);
+            this.alpha.TabIndex = 28;
+            this.alpha.Tag = "dont";
+            this.alpha.Text = "1";
+            this.alpha.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // beta
+            // 
+            this.beta.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.beta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.beta.Location = new System.Drawing.Point(734, 156);
+            this.beta.Margin = new System.Windows.Forms.Padding(2);
+            this.beta.Name = "beta";
+            this.beta.Size = new System.Drawing.Size(45, 26);
+            this.beta.TabIndex = 27;
+            this.beta.Tag = "dont";
+            this.beta.Text = "1";
+            this.beta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.ClientSize = new System.Drawing.Size(1302, 771);
+            this.ClientSize = new System.Drawing.Size(868, 501);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.alpha);
+            this.Controls.Add(this.beta);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.label6);
@@ -353,9 +395,6 @@
             this.Controls.Add(this.button7);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.SC);
-            this.Controls.Add(this.FC);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button3);
@@ -365,6 +404,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.contextMenuStrip1.ResumeLayout(false);
@@ -382,9 +422,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox FC;
-        private System.Windows.Forms.TextBox SC;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
@@ -400,6 +437,10 @@
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox alpha;
+        private System.Windows.Forms.TextBox beta;
     }
 }
 

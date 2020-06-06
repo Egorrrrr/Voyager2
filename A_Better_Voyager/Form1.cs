@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AntColony;
+using System.Diagnostics;
 
 namespace A_Better_Voyager
 {
     public partial class Form1 : Form
     {
+        List<Point> way = new List<Point>();
         /// <summary>
         /// Тень
         /// </summary>
@@ -66,16 +68,22 @@ namespace A_Better_Voyager
 
             foreach (var s in Cities)
             {
-                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                 e.Graphics.FillEllipse(Brushes.LightGreen, s.Value.X - 3, s.Value.Y - 3, 8, 8);
             }
+            if (way.Count > 1)
+            {
+                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                e.Graphics.DrawLines(peen, way.ToArray());
+                cts.FillEllipse(Brushes.Blue, way[0].X - 7, way[0].Y - 7, 15, 15);
+            }
+
 
         }
 
 
         private void Panel2_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            
 
         }
 
@@ -83,10 +91,11 @@ namespace A_Better_Voyager
         {
             if (help)
             {
+
                 MessageBox.Show("Очистка карты и массива городов");
                 return;
             }
-
+            way = new List<Point>();
             Cities.Clear();
             panel2.Invalidate();
         }
@@ -126,6 +135,7 @@ namespace A_Better_Voyager
                     Cities.Add(cnt++, p);
 
                 }
+                way = new List<Point>();
 
                 panel2.Invalidate();
 
@@ -146,6 +156,7 @@ namespace A_Better_Voyager
             }
             if (Cities.Count > 1)
             {
+                //way = new List<Point>();
                 ArrayBuild();
             }
             //NN.Show();
@@ -184,13 +195,22 @@ namespace A_Better_Voyager
             int ll;
             int.TryParse(Iter.Text, out int iter);
             int.TryParse(Ants.Text, out int ants);
-            if (iter > 0 && ants > 0)
+            int.TryParse(alpha.Text, out int al);
+            int.TryParse(beta.Text, out int be);
+            Stopwatch st = new Stopwatch();
+            TimeSpan time = new TimeSpan();
+            if (iter > 0 && ants > 0 && al> 0 && be >0)
             {
-                label2.Text = OutPut(AntColonyProgram.Solve(dists, Cities.Count, ants, iter, out ll));
+                st.Start();
+                int[] trail = AntColonyProgram.Solve(dists, Cities.Count, ants, iter, al , be, out ll);
+                st.Stop();
+                time = st.Elapsed;
+                label2.Text = OutPut(trail,time);
+                
             }
 
         }
-        public string OutPut(int[] a)
+        public string OutPut(int[] a, TimeSpan time)
         {
             double dst = 0;
 
@@ -199,24 +219,41 @@ namespace A_Better_Voyager
             Pen pp2 = new Pen(Brushes.Yellow);
 
 
-            for (int i = 1; i < a.Length; i++)
+            for (int i = 0; i < a.Length; i++)
             {
                 Point p1;
-                Point p2;
-                Cities.TryGetValue(a[i - 1], out p1);
-                Cities.TryGetValue(a[i], out p2);
-                if (i == 1)
-                {
-                    cts.FillEllipse(Brushes.Blue, p1.X - 7, p1.Y - 7, 15, 15);
+                Cities.TryGetValue(a[i], out p1);
+                //Cities.TryGetValue(a[i], out p2);
+                //if (i == 1)
+                //{
+                //    cts.FillEllipse(Brushes.Blue, p1.X - 7, p1.Y - 7, 15, 15);
 
-                }
-                cts.DrawLine(peen, p1, p2);
-                dst += GetDistance(p1.X, p1.Y, p2.X, p2.Y);
+                //}
+                //cts.DrawLine(peen, p1, p2);
+                way.Add(p1);
+                
+                //dst += GetDistance(p1.X, p1.Y, p2.X, p2.Y);
 
 
             }
+
+
+            for (int i = 1; i < a.Length; i++)
+            {
+
+                    Point p1;
+                    Point p2;
+                    Cities.TryGetValue(a[i], out p1);
+                    Cities.TryGetValue(a[i - 1], out p2);
+                    dst += GetDistance(p1.X, p1.Y, p2.X, p2.Y);
+
+            }
+            
+
             aa = (Math.Round(dst, 0)).ToString();
-            label3.Text = aa;
+            aa += "\n" + time.ToString();
+            panel2.Invalidate();
+            
             return aa;
 
         }
@@ -228,27 +265,7 @@ namespace A_Better_Voyager
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            if (help)
-            {
-                MessageBox.Show("Позволяет узнать расстояние между, указными в двух полях сверху, городам.\n P.S Неактуально, так как номера городов пользователю пока не известны");
-                return;
-            }
-            Pen pp = new Pen(Brushes.Red);
-            //Дистанция между городами
-            Point one;
-            Point two;
-            try
-            {
-                Cities.TryGetValue(int.Parse(FC.Text), out one);
-                Cities.TryGetValue(int.Parse(SC.Text), out two);
-            }
-            catch (Exception)
-            {
-                return;
-            }
-            cts.DrawLine(pp, one, two);
-            MessageBox.Show(Math.Round(GetDistance(one.X, one.Y, two.X, two.Y), 0).ToString());
-
+            
 
         }
 
@@ -346,5 +363,21 @@ namespace A_Better_Voyager
             }
         }
 
+        private void Label8_Click(object sender, EventArgs e)
+        {
+            if (help)
+            {
+                MessageBox.Show("Привлекательнотсь феромонов\n");
+            }
+
+        }
+
+        private void Label7_Click(object sender, EventArgs e)
+        {
+            if (help)
+            {
+                MessageBox.Show("Привлекательнотсь дистанции\n");
+            }
+        }
     }
 }
