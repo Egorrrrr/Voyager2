@@ -12,9 +12,19 @@ using System.Diagnostics;
 
 namespace A_Better_Voyager
 {
+    
     public partial class Form1 : Form
     {
-        List<Point> way = new List<Point>();
+        class Lines
+        {
+            public Color Color { get; set; }
+            public List<Point> Pnts { get; set; }
+            public Lines()
+            {
+                Color = Color.LightBlue;
+                Pnts = new List<Point>();
+            }
+        }
         /// <summary>
         /// Тень
         /// </summary>
@@ -49,6 +59,7 @@ namespace A_Better_Voyager
         Dictionary<int, Point> Cities = new Dictionary<int, Point>();
         int cnt;
         Form3 F3;
+        List<Lines> lines = new List<Lines>();
         private void Button1_Click(object sender, EventArgs e)
         {
             Form.ActiveForm.Close();
@@ -71,12 +82,17 @@ namespace A_Better_Voyager
                 e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                 e.Graphics.FillEllipse(Brushes.LightGreen, s.Value.X - 3, s.Value.Y - 3, 8, 8);
             }
-            if (way.Count > 1)
+            foreach (var item in lines)
             {
-                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-                e.Graphics.DrawLines(peen, way.ToArray());
-                cts.FillEllipse(Brushes.Blue, way[0].X - 7, way[0].Y - 7, 15, 15);
+                if (item.Pnts.Count > 1)
+                {
+                    Pen tmpen = new Pen(item.Color, 2);
+                    e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                    e.Graphics.DrawLines(tmpen, item.Pnts.ToArray());
+                    cts.FillEllipse(Brushes.Blue, item.Pnts[0].X - 7, item.Pnts[0].Y - 7, 15, 15);
+                }
             }
+            
 
 
         }
@@ -95,7 +111,7 @@ namespace A_Better_Voyager
                 MessageBox.Show("Очистка карты и массива городов");
                 return;
             }
-            way = new List<Point>();
+            lines = new List<Lines>();
             Cities.Clear();
             panel2.Invalidate();
         }
@@ -128,6 +144,7 @@ namespace A_Better_Voyager
             cnt = 0;
             try
             {
+                lines = new List<Lines>();
                 int count = int.Parse(textBox1.Text);
                 for (int i = 0; i < count; i++)
                 {
@@ -135,7 +152,6 @@ namespace A_Better_Voyager
                     Cities.Add(cnt++, p);
 
                 }
-                way = new List<Point>();
 
                 panel2.Invalidate();
 
@@ -217,7 +233,7 @@ namespace A_Better_Voyager
             string aa = "";
             Pen pp = new Pen(Brushes.Blue);
             Pen pp2 = new Pen(Brushes.Yellow);
-
+            List<Point> way = new List<Point>();
 
             for (int i = 0; i < a.Length; i++)
             {
@@ -236,7 +252,10 @@ namespace A_Better_Voyager
 
 
             }
-
+            Lines lns = new Lines();
+            lns.Pnts.AddRange(way);
+            lns.Color = peen.Color;
+            lines.Add(lns);
 
             for (int i = 1; i < a.Length; i++)
             {
