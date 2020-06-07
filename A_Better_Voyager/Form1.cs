@@ -77,11 +77,7 @@ namespace A_Better_Voyager
         private void Gridpnt(object sender, PaintEventArgs e)
         {
 
-            foreach (var s in Cities)
-            {
-                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-                e.Graphics.FillEllipse(Brushes.LightGreen, s.Value.X - 3, s.Value.Y - 3, 8, 8);
-            }
+            
             foreach (var item in lines)
             {
                 if (item.Pnts.Count > 1)
@@ -92,7 +88,12 @@ namespace A_Better_Voyager
                     cts.FillEllipse(Brushes.Blue, item.Pnts[0].X - 7, item.Pnts[0].Y - 7, 15, 15);
                 }
             }
-            
+            foreach (var s in Cities)
+            {
+                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                e.Graphics.FillEllipse(Brushes.LightGreen, s.Value.X - 3, s.Value.Y - 3, 8, 8);
+            }
+
 
 
         }
