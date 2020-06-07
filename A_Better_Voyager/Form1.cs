@@ -244,6 +244,8 @@ namespace A_Better_Voyager
             {
                 Point p1;
                 Cities.TryGetValue(a[i], out p1);
+                p1.X += 1;
+                p1.Y += 1;
                 //Cities.TryGetValue(a[i], out p2);
                 //if (i == 1)
                 //{
