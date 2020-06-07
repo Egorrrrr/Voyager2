@@ -141,7 +141,7 @@ namespace AntColony
         private static double Length(int[] trail, double[][] dists)
         {
             
-            double result = 0.0;
+            double result = 0;
             for (int i = 0; i <= trail.Length - 2; i++)
             {
                 result += Distance(trail[i], trail[i + 1], dists);
@@ -282,12 +282,12 @@ namespace AntColony
             {
                 if (i == cityX)
                 {
-                    taueta[i] = 0.0;
+                    taueta[i] = 0;
                     
                 }
                 else if (visited[i] == true)
                 {
-                    taueta[i] = 0.0;
+                    taueta[i] = 0;
                     // нулевая вероятность
                 }
                 else
@@ -328,8 +328,8 @@ namespace AntColony
                     for (int k = 0; k <= ants.Length - 1; k++)
                     {
                         double length = Length(ants[k], dists);
-                        double decrease = (1.0 - Decay) * pheromones[i][j];
-                        double increase = 0.0;
+                        double decrease = (1 - Decay) * pheromones[i][j];
+                        double increase = 0;
                         if (EdgeInTrail(i, j, ants[k]) == true)
                         {
                             increase = (Q / length);
