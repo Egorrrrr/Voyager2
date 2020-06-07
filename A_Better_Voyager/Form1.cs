@@ -217,6 +217,11 @@ namespace A_Better_Voyager
             TimeSpan time = new TimeSpan();
             if (iter > 0 && ants > 0 && al>= 0 && be >=0)
             {
+                if(al > 117 || be > 117)
+                {
+                    MessageBox.Show("Ограничение типа double не позволят выполнить программу с данными a и b");
+                    return;
+                }
                 st.Start();
                 int[] trail = AntColonyProgram.Solve(dists, Cities.Count, ants, iter, al , be, out ll);
                 st.Stop();
