@@ -461,10 +461,7 @@ namespace A_Better_Voyager
             {
                 return true;
             }
-            else if (idx == 0 && trail[lastIndex] == cityY)
-            {
-                return true;
-            }
+            
             else if (idx == 0)
             {
                 return false;
@@ -473,10 +470,7 @@ namespace A_Better_Voyager
             {
                 return true;
             }
-            else if (idx == lastIndex && trail[0] == cityY)
-            {
-                return true;
-            }
+            
             else if (idx == lastIndex)
             {
                 return false;

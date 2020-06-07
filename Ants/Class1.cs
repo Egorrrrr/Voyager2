@@ -353,27 +353,13 @@ namespace AntColony
             
             int lastIndex = trail.Length - 1;
             int idx = IndexOfTarget(trail, cityX);
-            //for (int i = 0; i < trail.Length-1; i++)
-            //{
-            //    if(trail[i] == cityX || trail[i+1] == cityY)
-            //    {
-            //        return true;
-            //    }
-            //    if (trail[i] == cityY || trail[i + 1] == cityX)
-            //    {
-            //        return true;
-            //    }
-            //}
-            //return false;
+            
 
             if (idx == 0 && trail[1] == cityY)
             {
                 return true;
             }
-            else if (idx == 0 && trail[lastIndex] == cityY)
-            {
-                return true;
-            }
+            
             else if (idx == 0)
             {
                 return false;
@@ -382,10 +368,7 @@ namespace AntColony
             {
                 return true;
             }
-            else if (idx == lastIndex && trail[0] == cityY)
-            {
-                return true;
-            }
+            
             else if (idx == lastIndex)
             {
                 return false;
